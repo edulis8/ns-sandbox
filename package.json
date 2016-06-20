@@ -48,6 +48,7 @@
     "eslint": "^2.7.0",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-plugin-react": "^4.3.0",
+    "morgan": "^1.7.0",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^0.14.7",
     "redbox-react": "^1.2.2",

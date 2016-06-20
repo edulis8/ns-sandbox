@@ -2,8 +2,14 @@
 import React, { Component } from 'react';
 // I only made this a class b/c i think it couldn't be a functional component 
 // if it had two functions inside?
-class Users extends Component {
-
+class RestletData extends Component {
+  constructor(props) {
+    super(props);
+    this.onInputChange = this.onInputChange.bind(this);
+  }
+  onInputChange(event) {
+    this.props.dispatch(this.props.handleSearch(event.target.value))
+  }
   renderData(data, i) {
     return (
       <tr key={i}>
@@ -26,8 +32,18 @@ class Users extends Component {
   render() {
     return (
     <div>
+      <p>
+        Restlet Searchable Data
+      </p>
+      <div className="col-md-5">
+        <input 
+          type="text" 
+          className="form-control" 
+          placeholder="search"
+          onChange={this.onInputChange}
+        />
+      </div>
       <div>
-        The suitelet data is:
           {
             this.props.loading ?
               <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i> :
@@ -50,7 +66,7 @@ class Users extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.users.map(this.renderData)}
+                  {this.props.data.map(this.renderData)}
                 </tbody>
               </table>
             }
@@ -60,4 +76,4 @@ class Users extends Component {
   }
 }
 
-export default Users;
+export default RestletData;

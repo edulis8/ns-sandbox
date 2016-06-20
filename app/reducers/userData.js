@@ -9,7 +9,7 @@ export default function userData(state = {
     case RECEIVE_USERS:
       return {
         ...state,
-        users: action.users,
+        users: action.users.data,
         loading: false
       };
     case REQUEST_USERS:

@@ -4,3 +4,4 @@
 // to pull out specific actions.
 // See `containers/UserContainer.js` for example
 export * from './usersActions';
+export * from './restletActions';

@@ -1,33 +1,45 @@
 {
   "extends": "airbnb",
-  "parser": "babel-ESlint",
-  "rules": {
-      "one-var": 0,
-      "complexity": [2, 3],
-      "id-length": 0,
-      "func-names": 0,
-      "indent": [2, 2, {"SwitchCase": 1}],
-      "quotes": [2, "single"],
-      "linebreak-style": [2, "unix"],
-      "semi": [2, "always"],
-      "strict": 0,
-      "no-console": 0,
-      "prefer-const": 0,
-      "comma-dangle": 0,
-      "react/prefer-es6-class": [1, "never"],
-      "react/react-in-jsx-scope": 1,
-      "no-use-before-define": [1, "nofunc"],
-      "jsx-quotes": 0
-
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
   },
   "env": {
-      "es6": true,
-      "node": true,
-      "browser": true
+    "browser": true,
+    "node": true,
   },
-  "ecmaFeatures": {
-      "jsx": true,
-      "experimentalObjectRestSpread": true
-  },
-  "plugins": ["react"]
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "no-var": "warn",
+    "no-undef": "off",
+    "max-len": "off",
+    "func-names": "off",
+    "no-unused-expressions": "off",
+    "prefer-arrow-callback": "warn",
+    "no-param-reassign": "off",
+    "new-cap": "off",
+    "react/prefer-stateless-function": "off",
+    "no-console": "off",
+    "react/prefer-es6-class": "off",
+    "react/prop-types":"off",
+    "react/jsx-no-bind": "off",
+    "arrow-body-style":"off",
+    "no-trailing-spaces":"off",
+    "spaced-comment":"warn",
+    "comma-dangle":"warn",
+    "no-multiple-empty-lines":"warn",
+    "quotes":"warn",
+    "space-before-function-paren":"warn",
+    "no-new":"off",
+    "no-unused-vars": "warn",
+    "array-callback-return": "off",
+    "consistent-return":"off",
+    "no-else-return":"off",
+    "semi":"warn"
+  }
 }

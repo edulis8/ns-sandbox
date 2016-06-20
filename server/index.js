@@ -9,6 +9,7 @@ import config from '../webpack.config.js';
 
 import { isDev, port } from './utils/envDefaults';
 import apiRoutes from './api';
+import morgan from 'morgan';
 
 const app = express();
 const server = http.createServer(app);
@@ -32,6 +33,7 @@ if (isDev) {
   });
 
   app.use(middleware);
+  app.use(morgan('dev'));
   app.use(webpackHotMiddleware(compiler));
   app.get('*', function response(req, res) { // eslint-disable-line prefer-arrow-callback
     res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '../dist/index.html')));

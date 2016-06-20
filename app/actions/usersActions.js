@@ -25,11 +25,15 @@ export const fetchUsers = () => dispatch => {
   dispatch(requestUsers());
   // Make the ajax request, then dispatch a
   // RECEIVE_USERS action with the data we received
+  const start = new Date().getTime();
   axios.get('api/users')
     .then(res => {
       // setTimeout to simulate network latency so we
       // can actually see the 'loading...' message
-      setTimeout(() => dispatch(receiveUsers(res.data)), 500);
+      
+      setTimeout(() => dispatch(receiveUsers(res.data)), 0);
+      const end = new Date().getTime();
+      console.log('ajax request on front end in seconds: ', (end - start) / 1000);
     })
     .catch(err => console.log(err));
 };

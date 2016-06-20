@@ -3,10 +3,6 @@ import axios from 'axios';
 
 const app = Router();
 
-// const userNames = ['Bob', 'Joe', 'Tommy'];
-
-const urlSuitelet = 'https://forms.na2.netsuite.com/app/site/hosting/scriptlet.nl?script=60&deploy=2&compid=TSTDRV1433032&h=7b4880622b71596d5747';
-
 const urlRestlet = 'https://rest.na2.netsuite.com/app/site/hosting/restlet.nl?script=64&deploy=2';
 
 const headers = { Authorization: 'NLAuth nlauth_account=TSTDRV1433032, nlauth_email=ebroberg@wsgc.com, nlauth_signature=5171201Rsj' };
@@ -14,11 +10,12 @@ const headers = { Authorization: 'NLAuth nlauth_account=TSTDRV1433032, nlauth_em
 app.use('/', (req, res) => {
   const start = new Date().getTime(); // milliseconds
   axios({
-    url: urlSuitelet,
+    url: urlRestlet,
     method: 'get',
-    // headers: ,
+    headers,
   })
     .then((data) => {
+      console.log(data)
       res.json(data);
       const end = new Date().getTime();
       console.log('time in seconds: ', (end - start) / 1000);
@@ -26,13 +23,6 @@ app.use('/', (req, res) => {
     .catch(err => console.log(err));
 });
 
-// app.use('/', (req, res) => res.json(userNames));
 
 export default app;
-
-// Restlet:
-// 'https://rest.na2.netsuite.com/app/site/hosting/restlet.nl?script=64&deploy=2'
-
-// Suitelet:
-// 'https://forms.na2.netsuite.com/app/site/hosting/scriptlet.nl?script=60&deploy=2&compid=TSTDRV1433032&h=7b4880622b71596d5747'
 
