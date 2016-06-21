@@ -1,6 +1,9 @@
 {
   "name": "eric-b",
   "version": "1.0.0",
+  "engines": {
+    "node": "6.0.0"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
