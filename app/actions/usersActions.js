@@ -31,7 +31,7 @@ export const fetchUsers = () => dispatch => {
       // setTimeout to simulate network latency so we
       // can actually see the 'loading...' message
       
-      setTimeout(() => dispatch(receiveUsers(res.data)), 0);
+      setTimeout(() => dispatch(receiveUsers(res)), 0);
       const end = new Date().getTime();
       console.log('ajax request on front end in seconds: ', (end - start) / 1000);
     })

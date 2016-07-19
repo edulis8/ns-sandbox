@@ -15,12 +15,12 @@ app.use('/', (req, res) => {
     headers,
   })
     .then((data) => {
-      console.log(data)
-      res.json(data);
-      const end = new Date().getTime();
-      console.log('time in seconds: ', (end - start) / 1000);
+      console.log('restlet DATA', data.data);
+      res.send(data.data);
+      // const end = new Date().getTime();
+      // console.log('time in seconds: ', (end - start) / 1000);
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log('ERROR', err));
 });
 
 

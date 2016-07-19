@@ -19,11 +19,12 @@ app.use('/', (req, res) => {
     // headers: ,
   })
     .then((data) => {
-      res.json(data);
+      console.log('suitelet DATA', data.data)
+      res.json(data.data);
       const end = new Date().getTime();
       console.log('time in seconds: ', (end - start) / 1000);
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log('ERROR', err));
 });
 
 // app.use('/', (req, res) => res.json(userNames));

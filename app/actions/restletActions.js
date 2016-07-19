@@ -17,7 +17,8 @@ export const fetchRestletData = () => dispatch => {
   const start = new Date().getTime();
   axios.get('api/restlet')
     .then(res => {
-      dispatch(receiveRestletData(res.data.data));
+      console.log('RES', res)
+      dispatch(receiveRestletData(res.data));
       const end = new Date().getTime();
       console.log('ajax request on front end in seconds: ', (end - start) / 1000);
     })
