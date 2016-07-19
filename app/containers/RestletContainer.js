@@ -11,7 +11,7 @@ import RestletData from '../components/RestletData';
 
 const RestletContainer = React.createClass({
   componentDidMount() {
-    console.log('props comp did mount', this.props)
+    // console.log('props comp did mount', this.props)
     this.props.dispatch(fetchRestletDataIfNeeded());
   },
 
@@ -22,7 +22,7 @@ const RestletContainer = React.createClass({
 });
 
 function mapStateToProps(state) {
-  console.log('state in mapStateToProps in RestletContainer', state);
+  // console.log('state in mapStateToProps in RestletContainer', state);
   return {
     loading: state.restletData.loading,
     data: state.restletData.data,

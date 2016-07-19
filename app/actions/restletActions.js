@@ -8,16 +8,15 @@ export const requestRestletData = () => ({ type: REQUEST_RESTLET_DATA });
 
 export const RESTLET_SEARCH = 'RESTLET_SEARCH';
 export const restletSearch = (searchInput) => {
-  console.log('searchInput', searchInput)
-  return ({ type: RESTLET_SEARCH, payload: searchInput })
-}
+  // console.log('searchInput', searchInput)
+  return ({ type: RESTLET_SEARCH, payload: searchInput });
+};
 
 export const fetchRestletData = () => dispatch => {
   dispatch(requestRestletData());
   const start = new Date().getTime();
   axios.get('api/restlet')
     .then(res => {
-      console.log('RES', res)
       dispatch(receiveRestletData(res.data));
       const end = new Date().getTime();
       console.log('ajax request on front end in seconds: ', (end - start) / 1000);
@@ -45,8 +44,8 @@ export const fetchRestletDataIfNeeded = () => (dispatch, getState) => {
 };
 
 export const handleSearch = (searchValue) => (dispatch, getState) => {
-  console.log('searchValue', searchValue)
+  // console.log('searchValue', searchValue)
   dispatch(restletSearch(searchValue));
-  console.log('getState()', getState())
+  // console.log('getState()', getState())
 };
 
