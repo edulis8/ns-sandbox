@@ -5,8 +5,9 @@ const app = Router();
 
 const urlRestlet = 'https://rest.na2.netsuite.com/app/site/hosting/restlet.nl?script=64&deploy=2';
 
-const headers = { Authorization: 'NLAuth nlauth_account=TSTDRV1433032, nlauth_email=ebroberg@wsgc.com, nlauth_signature=5171201Rsj' };
+const headers = { Authorization: 'NLAuth nlauth_account=TSTDRV1433032, nlauth_email=ebroberg@wsgc.com, nlauth_signature=Ab6871eb--' };
 
+console.log('XXXXX', headers)
 app.use('/', (req, res) => {
   const start = new Date().getTime(); // milliseconds
   axios({
@@ -15,7 +16,7 @@ app.use('/', (req, res) => {
     headers,
   })
     .then((data) => {
-      console.log('restlet DATA', data.data);
+      console.log('RRRR restlet DATA', data.data);
       res.send(data.data);
       // const end = new Date().getTime();
       // console.log('time in seconds: ', (end - start) / 1000);
