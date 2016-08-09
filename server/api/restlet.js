@@ -5,7 +5,7 @@ const app = Router();
 
 const urlRestlet = 'https://rest.na2.netsuite.com/app/site/hosting/restlet.nl?script=64&deploy=2';
 
-const headers = { Authorization: 'NLAuth nlauth_account=TSTDRV1433032, nlauth_email=ebroberg@wsgc.com, nlauth_signature=Ab6871eb--' };
+const headers = { Authorization: 'NLAuth nlauth_account=6666, nlauth_email=66666, nlauth_signature=6666' };
 
 console.log('XXXXX', headers)
 app.use('/', (req, res) => {
@@ -16,10 +16,10 @@ app.use('/', (req, res) => {
     headers,
   })
     .then((data) => {
-      console.log('RRRR restlet DATA', data.data);
+      // console.log('RRRR restlet DATA', data.data);
       res.send(data.data);
-      // const end = new Date().getTime();
-      // console.log('time in seconds: ', (end - start) / 1000);
+      const end = new Date().getTime();
+      console.log('time in seconds: ', (end - start) / 1000);
     })
     .catch(err => console.log('ERROR', err));
 });

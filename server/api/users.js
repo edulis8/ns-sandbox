@@ -12,6 +12,7 @@ const urlRestlet = 'https://rest.na2.netsuite.com/app/site/hosting/restlet.nl?sc
 const headers = { Authorization: 'NLAuth nlauth_account=TSTDRV1433032, nlauth_email=ebroberg@wsgc.com, nlauth_signature=Ab6871eb--' };
 
 app.use('/', (req, res) => {
+  console.log('xxxx', headers)
   const start = new Date().getTime(); // milliseconds
   axios({
     url: urlSuitelet,
@@ -19,7 +20,7 @@ app.use('/', (req, res) => {
     // headers: ,
   })
     .then((data) => {
-      console.log('SSSS suitelet DATA', data.data)
+      console.log('suitelet DATA', data.data)
       res.json(data.data);
       const end = new Date().getTime();
       console.log('time in seconds: ', (end - start) / 1000);

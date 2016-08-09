@@ -2,22 +2,19 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetchRestletDataIfNeeded } from '../actions';
-import { handleSearch } from '../actions';
+import { fetchRestletDataIfNeeded, handleSearch, handleTitleClick, handleQuantityCellClick } from '../actions';
 
 import RestletData from '../components/RestletData';
 
-// const handleSearch = (value) => console.log(value)
 
 const RestletContainer = React.createClass({
   componentDidMount() {
-    // console.log('props comp did mount', this.props)
     this.props.dispatch(fetchRestletDataIfNeeded());
   },
 
   render() {
-    const { loading, data, filtered } = this.props;
-    return <RestletData loading={loading} data={filtered} handleSearch={handleSearch} dispatch={this.props.dispatch} />;
+    const { loading, data, filtered, titleClicked, selectedCell } = this.props;
+    return <RestletData loading={loading} data={filtered} handleTitleClick={handleTitleClick} handleSearch={handleSearch} handleQuantityCellClick={handleQuantityCellClick} dispatch={this.props.dispatch} titleClicked={titleClicked} selectedCell={selectedCell} />;
   },
 });
 
@@ -26,7 +23,9 @@ function mapStateToProps(state) {
   return {
     loading: state.restletData.loading,
     data: state.restletData.data,
-    filtered: state.restletData.filtered
+    filtered: state.restletData.filtered,
+    titleClicked: state.restletData.titleClicked,
+    selectedCell: state.restletData.selectedCell,
   };
 }
 

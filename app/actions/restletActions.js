@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 export const RECEIVE_RESTLET_DATA = 'RECEIVE_RESTLET_DATA';
-export const receiveRestletData = (restletData) => ({ type: RECEIVE_RESTLET_DATA, restletData });
+export const receiveRestletData = (restletData) => {
+
+  return { type: RECEIVE_RESTLET_DATA, restletData };
+};
 
 export const REQUEST_RESTLET_DATA = 'REQUEST_RESTLET_DATA';
 export const requestRestletData = () => ({ type: REQUEST_RESTLET_DATA });
@@ -12,12 +15,32 @@ export const restletSearch = (searchInput) => {
   return ({ type: RESTLET_SEARCH, payload: searchInput });
 };
 
+export const RESTLET_CLICK = 'RESTLET_CLICK';
+export const restletTitleClick = titleClicked => {
+  console.log('restletTitleClick in /actions, titleClicked: ', titleClicked);
+  return ({ type: RESTLET_CLICK, payload: titleClicked });
+};
+
+export const RESTLET_CELL_CLICK = 'RESTLET_CELL_CLICK';
+export const restletCellClick = (id) => {
+  console.log('restletCellClick', id)
+  return ({ type: RESTLET_CELL_CLICK, payload: id })
+};
+
 export const fetchRestletData = () => dispatch => {
   dispatch(requestRestletData());
   const start = new Date().getTime();
   axios.get('api/restlet')
     .then(res => {
-      dispatch(receiveRestletData(res.data));
+      let counter = 1;
+      const restletData = [];
+      for (let i = 0; i < res.data.length; i++) {
+        res.data[i].line_number = counter++;
+        res.data[i].hts = 'asdf';
+        restletData.push(res.data[i]);
+      }
+
+      dispatch(receiveRestletData(restletData));
       const end = new Date().getTime();
       console.log('ajax request on front end in seconds: ', (end - start) / 1000);
     })
@@ -44,8 +67,15 @@ export const fetchRestletDataIfNeeded = () => (dispatch, getState) => {
 };
 
 export const handleSearch = (searchValue) => (dispatch, getState) => {
-  // console.log('searchValue', searchValue)
   dispatch(restletSearch(searchValue));
-  // console.log('getState()', getState())
+};
+
+export const handleTitleClick = () => (dispatch, getState) => {
+  const titleClicked = getState().restletData.titleClicked;
+  dispatch(restletTitleClick(titleClicked));
+};
+
+export const handleQuantityCellClick = (id) => (dispatch, getState) => {
+  dispatch(restletCellClick(id));
 };
 
